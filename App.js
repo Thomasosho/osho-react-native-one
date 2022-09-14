@@ -1,12 +1,19 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screen/HomeScreen';
+import { TailwindProvider } from 'tailwindcss-react-native';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-red-500">Osho is my name</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <TailwindProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="Index" component={HomeScreen} />
+        </Stack.Navigator>
+      </TailwindProvider>
+    </NavigationContainer>
   );
 }
